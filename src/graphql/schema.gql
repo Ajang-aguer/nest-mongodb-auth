@@ -1,0 +1,75 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Role {
+  name: String!
+}
+
+type User {
+  id: ID!
+  name: String!
+  surname: String
+  lastname: String!
+  email: String!
+  password: String!
+  phone: String
+  location: String
+  address: String
+  isSuspended: Bool!
+  isActive: Bool!
+  activationToken: String!
+  lastLogin: String
+  joinedAt: String!
+  role: ID!
+}
+
+"""Custom boolean scalar type"""
+scalar Bool
+
+type AccessToken {
+  access_token: String!
+}
+
+type Query {
+  roles: [Role!]!
+  role(id: Int!): Role!
+}
+
+type Mutation {
+  login(loginUserInput: LoginUserInput!): AccessToken!
+  createUser(createUserInput: CreateUserInput!): User!
+  activateUser(activateUserInput: ActivateUserInput!): String!
+  createRole(createRoleInput: CreateRoleInput!): Role!
+  updateRole(updateRoleInput: UpdateRoleInput!): Role!
+  removeRole(id: Int!): Role!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input CreateUserInput {
+  name: String!
+  surname: String
+  lastname: String!
+  email: String!
+  password: String!
+  phone: String
+  location: String
+  address: String
+}
+
+input ActivateUserInput {
+  token: String!
+}
+
+input CreateRoleInput {
+  name: String!
+}
+
+input UpdateRoleInput {
+  name: String
+  id: Int!
+}
